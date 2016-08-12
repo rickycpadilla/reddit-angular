@@ -1,26 +1,4 @@
-var app = angular.module("redApp", ["angularMoment"]);
-
-// VOTE
-// X click up, votes up, green positive
-// X click down, votes down, green positive
-
-// COMMENTS
-// X add comment to array
-// X at one comment, say "comment"
-
-// SUBMIT POST
-// X add to post array
-
-// SORT
-// X sort by rating on click
-// X sort by date on click
-// X sort by title on click
-
-// SEARCH
-// X show search results
-
-// ANIMATION
-// add animation
+var app = angular.module("redApp", ["angularMoment", "ngAnimate"]);
 
 app.controller("redCont", ['$scope', function($scope, $filter){
   $scope.reddit = {};

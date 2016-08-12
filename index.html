@@ -14,10 +14,33 @@
       #box {display: flex}
       .green {color: green}
       .red {color: red}
+      .ng-enter {
+        transition:0.6s ease all;
+        opacity:0;
+        transform:translateY(100%);
+      }
+      .ng-enter.ng-enter-active {
+        opacity:1;
+        transform:translateY(0);
+      }
+      .ng-leave {
+        transition:0.6s ease all;
+        opacity:1;
+        transform:translateY(0);
+      }
+      .ng-leave.ng-leave-active {
+        opacity:0;
+        transform:translateY(100%);
+      }
+      .ng-enter-stagger, .ng-leave-stagger {
+        transition-delay: 0.2s;
+        transition-duration:0;
+      }
     </style>
     <!-- JS -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
     <script type="text/javascript" src="app.js"></script>
     <!-- load momentJS (required for angular-moment) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
