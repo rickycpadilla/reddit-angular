@@ -17,7 +17,10 @@ var app = angular.module("redApp", ["angularMoment"]);
 // X sort by title on click
 
 // SEARCH
-// show search results
+// X show search results
+
+// ANIMATION
+// add animation
 
 app.controller("redCont", ['$scope', function($scope, $filter){
   $scope.reddit = {};

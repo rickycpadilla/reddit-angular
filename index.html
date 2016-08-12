@@ -34,7 +34,7 @@
         <li>
           <form class="navbar-form navbar-left">
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input ng-model="searchy" type="text" class="form-control" placeholder="Search">
             </div>
           </form>
         </li>
@@ -78,7 +78,7 @@
     <br>
 
   </div>
-<div ng-repeat="post in reddit.posts | orderBy: reddit.sorter">
+<div ng-repeat="post in reddit.posts | orderBy: reddit.sorter | filter: searchy">
   <!-- POSTS -->
   <div id="box" class="well well-lg">
     <div>
