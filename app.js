@@ -5,8 +5,8 @@ var app = angular.module("redApp", ["angularMoment"]);
 // X click down, votes down, green positive
 
 // COMMENTS
-// add comment to array
-// at one comment, say "comment"
+// X add comment to array
+// X at one comment, say "comment"
 
 // SUBMIT POST
 // X add to post array
@@ -35,10 +35,15 @@ app.controller("redCont", ['$scope', function($scope, $filter){
     $scope.reddit.toggle();
     $scope.Form = {};
   };
+  $scope.commForm = {};
+  $scope.submitComm = function(post){
+    post.comments.push(this.commForm);
+    $scope.commForm = {};
+    $scope.reddit.addToggle(post)
+  };
   $scope.reddit.sorter = '-time';
   $scope.reddit.changeSort = function(thing){
     $scope.reddit.sorter = thing;
-    console.log($scope.reddit.sorter);
   };
   $scope.reddit.formShow = false;
   $scope.reddit.toggle = function(){

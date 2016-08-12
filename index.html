@@ -114,7 +114,7 @@
       <!-- ADD COMMENT -->
       <div class="addComment">
         <div class="formy" ng-show="post.showAdd">
-          <form ng-submit="submitComm()" class="form-inline" role="form">
+          <form ng-submit="submitComm(post)" class="form-inline" role="form">
             <div class="form-group">
               <label for="author">Author:</label>
               <input ng-model="commForm.author" type="text" class="form-control" id="author">
