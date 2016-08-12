@@ -1,7 +1,33 @@
 var app = angular.module("redApp", ["angularMoment"]);
 
+// VOTE
+// X click up, votes up, green positive
+// X click down, votes down, green positive
+
+// COMMENTS
+// add comment to array
+// at one comment, say "comment"
+
+// SUBMIT POST
+// add to post array
+
+// SORT
+// sort by rating on click
+// sort by date on click
+// sort by title on click
+
 app.controller("redCont", ['$scope', function($scope){
   $scope.reddit = {};
+  $scope.Form = {};
+  $scope.submitIt = function(){
+    $scope.Form.votes = 0;
+    $scope.Form.time = new Date();
+    $scope.Form.comments = [];
+    $scope.Form.showComments = false;
+    $scope.Form.showAdd = false;
+    $scope.reddit.posts.push(this.Form);
+    console.log($scope.reddit.posts);
+  };
   $scope.reddit.formShow = false;
   $scope.reddit.toggle = function(){
     $scope.reddit.formShow = !$scope.reddit.formShow
@@ -11,6 +37,12 @@ app.controller("redCont", ['$scope', function($scope){
   };
   $scope.reddit.addToggle = function(post){
     post.showAdd = !post.showAdd
+  };
+  $scope.reddit.upVote = function(post){
+    post.votes += 1
+  };
+  $scope.reddit.downVote = function(post){
+    post.votes -= 1
   };
   $scope.reddit.posts = [
     {
