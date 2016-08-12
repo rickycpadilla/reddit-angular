@@ -44,9 +44,9 @@
             <span class="caret"></span>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#">Votes</a></li>
-            <li><a href="#">Date</a></li>
-            <li><a href="#">Title</a></li>
+            <li ng-click="reddit.changeSort('-votes')"><a href="#">Votes</a></li>
+            <li ng-click="reddit.changeSort('-time')"><a href="#">Date</a></li>
+            <li ng-click="reddit.changeSort('+title')"><a href="#">Title</a></li>
           </ul>
         </li>
       </ul>
@@ -78,7 +78,7 @@
     <br>
 
   </div>
-<div ng-repeat="post in reddit.posts">
+<div ng-repeat="post in reddit.posts | orderBy: reddit.sorter">
   <!-- POSTS -->
   <div id="box" class="well well-lg">
     <div>

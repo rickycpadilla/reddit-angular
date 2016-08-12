@@ -9,28 +9,37 @@ var app = angular.module("redApp", ["angularMoment"]);
 // at one comment, say "comment"
 
 // SUBMIT POST
-// add to post array
+// X add to post array
 
 // SORT
-// sort by rating on click
-// sort by date on click
-// sort by title on click
+// X sort by rating on click
+// X sort by date on click
+// X sort by title on click
 
-app.controller("redCont", ['$scope', function($scope){
+// SEARCH
+// show search results
+
+app.controller("redCont", ['$scope', function($scope, $filter){
   $scope.reddit = {};
   $scope.Form = {};
   $scope.submitIt = function(){
     $scope.Form.votes = 0;
-    $scope.Form.time = new Date();
+    $scope.Form.time = Date.now();
     $scope.Form.comments = [];
     $scope.Form.showComments = false;
     $scope.Form.showAdd = false;
     $scope.reddit.posts.push(this.Form);
-    console.log($scope.reddit.posts);
+    $scope.reddit.toggle();
+    $scope.Form = {};
+  };
+  $scope.reddit.sorter = '-time';
+  $scope.reddit.changeSort = function(thing){
+    $scope.reddit.sorter = thing;
+    console.log($scope.reddit.sorter);
   };
   $scope.reddit.formShow = false;
   $scope.reddit.toggle = function(){
-    $scope.reddit.formShow = !$scope.reddit.formShow
+    $scope.reddit.formShow = !$scope.reddit.formShow;
   };
   $scope.reddit.commentToggle = function(post){
     post.showComments = !post.showComments
@@ -48,16 +57,16 @@ app.controller("redCont", ['$scope', function($scope){
     {
       title: "Why Captain America Sucks",
       author: "Tony Stark",
-      votes: 0,
-      time: "Thu Aug 11 2016 16:58:41 GMT-0600 (MDT)",
+      votes: 2,
+      time: 1470474521032,
       comments: [
         {
-          author: "Scott",
-          text: "Will this work?"
+          author: "Steve Rogers",
+          text: "C'mon, man!"
         },
         {
-          author: "Ricky",
-          text: "Let's see..."
+          author: "Tony Stark",
+          text: "Sorry, it's the truth!"
         }
       ],
       showComments: false,
@@ -68,12 +77,12 @@ app.controller("redCont", ['$scope', function($scope){
     {
       title: "War Machine vs Falcon?",
       author: "Lt. James Rhodes",
-      votes: 0,
-      time: "Wed Aug 10 2016 10:58:41 GMT-0600 (MDT)",
+      votes: 4,
+      time: 1470834521032,
       comments: [
         {
-          author: "Bud",
-          text: "YAY!!!!!"
+          author: "Natasha Romanov",
+          text: "Yeah, I have to agree with you here."
         }
       ],
       showComments: false,
@@ -84,9 +93,21 @@ app.controller("redCont", ['$scope', function($scope){
     {
       title: "Best Spiderman Ever!",
       author: "Peter Parker",
-      votes: 0,
-      time: "Wed Aug 11 2016 15:28:41 GMT-0600 (MDT)",
+      votes: -3,
+      time: 1470954521032,
       comments: [
+        {
+          author: "Scott Lang",
+          text: "Really, though - Antman is the coolest!"
+        },
+        {
+          author: "Toby McGuire",
+          text: "No, I was the best!"
+        },
+        {
+          author: "Dr Osborne",
+          text: "All Spidermen are dumb."
+        },
       ],
       showComments: false,
       showAdd: false,
